@@ -1,5 +1,13 @@
 package com.renu.pf_r_api.models;
 
-public class AdminFile {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
+public class AdminFile {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 }
