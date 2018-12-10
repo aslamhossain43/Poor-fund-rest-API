@@ -17,8 +17,8 @@ import com.renu.pf_r_api.models.Consumers;
 import com.renu.pf_r_api.repositories.ConsumersRepository;
 
 @CrossOrigin("*")
+@RequestMapping(value="/consumers")
 @RestController
-@RequestMapping(value = "/consumers")
 public class ConsumersController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ConsumersController.class);
 	@Autowired
@@ -43,6 +43,8 @@ public class ConsumersController {
 
 	}
 
+
+	
 	@RequestMapping(value = "/addConsumers")
 	public ResponseEntity<?> addConsumers(@RequestBody Consumers consumers) {
 		LOGGER.info("From class ConsumersController, method : addConsumers() ");
