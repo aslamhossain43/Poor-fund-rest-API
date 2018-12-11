@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileUpload {
 
 	private static final Path ABS_PATH = Paths
-			.get("H:\\NodeJS_Github\\Poor-fund-App\\Poor-fund-App\\src\\assets\\images\\");
+			.get("H:\\NodeJS_Github\\Poor-fund-App\\Poor-fund-App\\src\\assets\\client-images\\");
 	private static final Logger LOGGER = LoggerFactory.getLogger(FileUpload.class);
 
 	public static void fileUpload(MultipartFile piFile, String piCode, MultipartFile apiFile, String apiCode) {

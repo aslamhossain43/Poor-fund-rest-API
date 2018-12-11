@@ -6,11 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-
-import org.springframework.web.multipart.MultipartFile;
 @Entity
 public class Consumers extends BaseConsumers<Long> {
 	@Id
@@ -22,10 +19,10 @@ public class Consumers extends BaseConsumers<Long> {
 	private String name;
 	@NotBlank(message = "Your country")
 	private String country;
-	@NotBlank(message = "Enter your zila")
-	private String zila;
-	@NotBlank(message = "Enter your upozila")
-	private String upozila;
+	@NotBlank(message = "Enter your zela")
+	private String zela;
+	@NotBlank(message = "Enter your upozela")
+	private String upozela;
 	@NotBlank(message = "Enter your union")
 	private String union;
 	@NotBlank(message = "Enter your work")
@@ -49,8 +46,8 @@ public class Consumers extends BaseConsumers<Long> {
 
 
 	public Consumers(Long id, String piCode, String apiCode, @NotBlank(message = "Enter your  name") String name,
-			@NotBlank(message = "Your country") String country, @NotBlank(message = "Enter your zila") String zila,
-			@NotBlank(message = "Enter your upozila") String upozila,
+			@NotBlank(message = "Your country") String country, @NotBlank(message = "Enter your zela") String zela,
+			@NotBlank(message = "Enter your upozela") String upozela,
 			@NotBlank(message = "Enter your union") String union, @NotBlank(message = "Enter your work") String work,
 			@NotBlank @Size(min = 11, max = 11, message = "Enter a phone number") String contact,
 			@NotBlank(message = "Enter bkash/rocket number") String bkash) {
@@ -60,8 +57,8 @@ public class Consumers extends BaseConsumers<Long> {
 		this.apiCode = apiCode;
 		this.name = name;
 		this.country = country;
-		this.zila = zila;
-		this.upozila = upozila;
+		this.zela = zela;
+		this.upozela = upozela;
 		this.union = union;
 		this.work = work;
 		this.contact = contact;
@@ -89,8 +86,6 @@ public class Consumers extends BaseConsumers<Long> {
 	}
 
 
-
-
 	public String getName() {
 		return name;
 	}
@@ -111,23 +106,23 @@ public class Consumers extends BaseConsumers<Long> {
 	}
 
 
-	public String getZila() {
-		return zila;
+	public String getZela() {
+		return zela;
 	}
 
 
-	public void setZila(String zila) {
-		this.zila = zila;
+	public void setZela(String zela) {
+		this.zela = zela;
 	}
 
 
-	public String getUpozila() {
-		return upozila;
+	public String getUpozela() {
+		return upozela;
 	}
 
 
-	public void setUpozila(String upozila) {
-		this.upozila = upozila;
+	public void setUpozela(String upozela) {
+		this.upozela = upozela;
 	}
 
 
@@ -171,24 +166,19 @@ public class Consumers extends BaseConsumers<Long> {
 	}
 
 
-
 	public void setId(Long id) {
 		this.id = id;
 	}
 
 
-
 	@Override
 	public String toString() {
 		return "Consumers [id=" + id + ", piCode=" + piCode + ", apiCode=" + apiCode + ", name=" + name + ", country="
-				+ country + ", zila=" + zila + ", upozila=" + upozila + ", union=" + union + ", work=" + work
+				+ country + ", zela=" + zela + ", upozela=" + upozela + ", union=" + union + ", work=" + work
 				+ ", contact=" + contact + ", bkash=" + bkash + "]";
 	}
-	
-	
-	
-	
-	
+
+
 	
 	
 	
