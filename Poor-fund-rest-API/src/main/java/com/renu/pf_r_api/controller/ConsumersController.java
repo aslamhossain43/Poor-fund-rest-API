@@ -17,7 +17,7 @@ import com.renu.pf_r_api.models.Consumers;
 import com.renu.pf_r_api.repositories.ConsumersRepository;
 
 @CrossOrigin("*")
-@RequestMapping(value="/consumers")
+@RequestMapping(value = "/consumers")
 @RestController
 public class ConsumersController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ConsumersController.class);
@@ -25,8 +25,24 @@ public class ConsumersController {
 	FileUpload fileUpload;
 	@Autowired
 	ConsumersRepository consumersRepository;
-	public String piCode = null;
-	public String apiCode = null;
+	public String piCode;
+	public String apiCode;
+	@PostMapping(value = "/addConsumers")
+	public ResponseEntity<?> addConsumers(@RequestBody Consumers consumers) {
+		LOGGER.info("From class ConsumersController, method : addConsumers() ");
+		if (consumers.getId() == null) {
+			this.piCode = consumers.getPiCode();
+			this.apiCode = consumers.getApiCode();
+			consumersRepository.save(consumers);
+            consumers.setId(null);			
+			return ResponseEntity.ok().body("your operation has been completed successfully");
+
+		} else {
+			consumersRepository.save(consumers);
+			consumers.setId(null);
+			return ResponseEntity.ok().body("your operation has been completed successfully");
+		}
+	}
 
 	@PostMapping(value = "/addFile")
 	public ResponseEntity<?> addConsumersFile(@RequestParam("piFile") MultipartFile piFile,
@@ -41,18 +57,6 @@ public class ConsumersController {
 			return ResponseEntity.ok().body("file is not uploaded !");
 		}
 
-	}
-
-
-	
-	@RequestMapping(value = "/addConsumers")
-	public ResponseEntity<?> addConsumers(@RequestBody Consumers consumers) {
-		LOGGER.info("From class ConsumersController, method : addConsumers() ");
-		this.piCode = consumers.getPiCode();
-		this.apiCode = consumers.getApiCode();
-		consumersRepository.save(consumers);
-		new Consumers(null, null, null, null, null, null, null, null, null, null, null);
-		return ResponseEntity.ok().body("your operation has been completed successfully");
 	}
 
 }

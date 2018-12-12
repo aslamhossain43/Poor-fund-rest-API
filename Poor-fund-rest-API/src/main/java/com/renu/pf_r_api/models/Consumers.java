@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.NotNull;
 @Entity
 public class Consumers extends BaseConsumers<Long> {
 	@Id
@@ -27,11 +27,10 @@ public class Consumers extends BaseConsumers<Long> {
 	private String union;
 	@NotBlank(message = "Enter your work")
 	private String work;
-	@NotBlank
-	@Size(min=11,max=11,message="Enter a phone number")
-	private String contact;
-	@NotBlank(message = "Enter bkash/rocket number")
-	private String bkash;
+	@NotNull
+	private Long contact;
+	@NotNull
+	private Long bkash;
 	@Override
 	public Long getId() {
 		return id;
@@ -45,12 +44,15 @@ public class Consumers extends BaseConsumers<Long> {
 	}
 
 
+
+
+
+
 	public Consumers(Long id, String piCode, String apiCode, @NotBlank(message = "Enter your  name") String name,
 			@NotBlank(message = "Your country") String country, @NotBlank(message = "Enter your zela") String zela,
 			@NotBlank(message = "Enter your upozela") String upozela,
 			@NotBlank(message = "Enter your union") String union, @NotBlank(message = "Enter your work") String work,
-			@NotBlank @Size(min = 11, max = 11, message = "Enter a phone number") String contact,
-			@NotBlank(message = "Enter bkash/rocket number") String bkash) {
+			@NotNull Long contact, @NotNull Long bkash) {
 		super();
 		this.id = id;
 		this.piCode = piCode;
@@ -146,22 +148,26 @@ public class Consumers extends BaseConsumers<Long> {
 	}
 
 
-	public String getContact() {
+
+
+
+
+	public Long getContact() {
 		return contact;
 	}
 
 
-	public void setContact(String contact) {
+	public void setContact(Long contact) {
 		this.contact = contact;
 	}
 
 
-	public String getBkash() {
+	public Long getBkash() {
 		return bkash;
 	}
 
 
-	public void setBkash(String bkash) {
+	public void setBkash(Long bkash) {
 		this.bkash = bkash;
 	}
 
