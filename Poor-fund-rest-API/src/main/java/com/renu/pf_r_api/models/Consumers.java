@@ -1,7 +1,5 @@
 package com.renu.pf_r_api.models;
 
-import java.util.UUID;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -38,15 +36,8 @@ public class Consumers extends BaseConsumers<Long> {
 	
 	
 	public Consumers() {
-		this.piCode = "PI" + UUID.randomUUID().toString().substring(26).toUpperCase();
-		this.apiCode = "API" + UUID.randomUUID().toString().substring(26).toUpperCase();
 		
 	}
-
-
-
-
-
 
 	public Consumers(Long id, String piCode, String apiCode, @NotBlank(message = "Enter your  name") String name,
 			@NotBlank(message = "Your country") String country, @NotBlank(message = "Enter your zela") String zela,

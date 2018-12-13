@@ -1,14 +1,18 @@
 package com.renu.pf_r_api.controller;
 
+import java.util.UUID;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -25,22 +29,24 @@ public class ConsumersController {
 	FileUpload fileUpload;
 	@Autowired
 	ConsumersRepository consumersRepository;
-	public String piCode;
-	public String apiCode;
+	public String piCode = null;
+	public String apiCode = null;
 	@PostMapping(value = "/addConsumers")
 	public ResponseEntity<?> addConsumers(@RequestBody Consumers consumers) {
 		LOGGER.info("From class ConsumersController, method : addConsumers() ");
 		if (consumers.getId() == null) {
-			this.piCode = consumers.getPiCode();
-			this.apiCode = consumers.getApiCode();
+			consumers.setPiCode(this.piCode);
+			consumers.setApiCode(this.apiCode);
 			consumersRepository.save(consumers);
-            consumers.setId(null);			
-			return ResponseEntity.ok().body("your operation has been completed successfully");
+			this.piCode=null;
+			this.apiCode=null;
+            new Consumers(null, null, null, null, null, null, null, null, null, null, null);	
+			return ResponseEntity.ok().body("Operation success !");
 
 		} else {
 			consumersRepository.save(consumers);
-			consumers.setId(null);
-			return ResponseEntity.ok().body("your operation has been completed successfully");
+			new Consumers(null, null, null, null, null, null, null, null, null, null, null);
+			return ResponseEntity.ok().body(null);
 		}
 	}
 
@@ -48,15 +54,33 @@ public class ConsumersController {
 	public ResponseEntity<?> addConsumersFile(@RequestParam("piFile") MultipartFile piFile,
 			@RequestParam("apiFile") MultipartFile apiFile) {
 		LOGGER.info("From class ConsumersController ,method : ResponseEntity<String>addConsumersFile()");
-		try {
-			FileUpload.fileUpload(piFile, this.piCode, apiFile, this.apiCode);
-			this.piCode = null;
-			this.apiCode = null;
-			return ResponseEntity.ok().body("file is uploaded !");
-		} catch (Exception e) {
-			return ResponseEntity.ok().body("file is not uploaded !");
-		}
+		      if ((piFile.getContentType().equals("image/jpeg")
+		    		|| piFile.getContentType().equals("image/jpg")
+		    		|| piFile.getContentType().equals("image/png")
+		    		|| piFile.getContentType().equals("image/gif"))
+		    		  && 
+		    		  (apiFile.getContentType().equals("image/jpeg")
+		    		|| apiFile.getContentType().equals("image/jpg")
+		    		|| apiFile.getContentType().equals("image/png")
+		    		|| apiFile.getContentType().equals("image/gif"))) {
+		    	  
+		    	  this.piCode = "PI" + UUID.randomUUID().toString().substring(26).toUpperCase();
+		  		  this.apiCode = "API" + UUID.randomUUID().toString().substring(26).toUpperCase();
+		  		
+		    	  
+		    	  FileUpload.fileUpload(piFile, this.piCode, apiFile, this.apiCode);
+		    	  LOGGER.info("From class ConsumersController ,method : ResponseEntity<String>addConsumersFile(),Image uploaded");
+					return ResponseEntity.ok().body(" success file upload ");
+			}else {
+				LOGGER.info("From class ConsumersController ,method : ResponseEntity<String>addConsumersFile(), File not an image that is rejected");
+				
+				return ResponseEntity.badRequest().body(null);
+				
+			
+			}
+		
 
 	}
 
 }
+
