@@ -39,25 +39,6 @@ public class Consumers extends BaseConsumers<Long> {
 		
 	}
 
-	public Consumers(Long id, String piCode, String apiCode, @NotBlank(message = "Enter your  name") String name,
-			@NotBlank(message = "Your country") String country, @NotBlank(message = "Enter your zela") String zela,
-			@NotBlank(message = "Enter your upozela") String upozela,
-			@NotBlank(message = "Enter your union") String union, @NotBlank(message = "Enter your work") String work,
-			@NotNull Long contact, @NotNull Long bkash) {
-		super();
-		this.id = id;
-		this.piCode = piCode;
-		this.apiCode = apiCode;
-		this.name = name;
-		this.country = country;
-		this.zela = zela;
-		this.upozela = upozela;
-		this.union = union;
-		this.work = work;
-		this.contact = contact;
-		this.bkash = bkash;
-	}
-
 
 	public String getPiCode() {
 		return piCode;
