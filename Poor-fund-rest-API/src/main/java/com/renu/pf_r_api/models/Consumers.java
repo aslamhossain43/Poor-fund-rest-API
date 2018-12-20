@@ -13,6 +13,7 @@ public class Consumers extends BaseConsumers<Long> {
 	private Long id;
 	private String piCode;
 	private String apiCode;
+	private String prCode;
 	@NotBlank(message = "Enter your  name")
 	private String name;
 	@NotBlank(message = "Your country")
@@ -29,6 +30,7 @@ public class Consumers extends BaseConsumers<Long> {
 	private Long contact;
 	@NotNull
 	private Long bkash;
+	private String status;
 	@Override
 	public Long getId() {
 		return id;
@@ -57,6 +59,16 @@ public class Consumers extends BaseConsumers<Long> {
 
 	public void setApiCode(String apiCode) {
 		this.apiCode = apiCode;
+	}
+
+
+	public String getPrCode() {
+		return prCode;
+	}
+
+
+	public void setPrCode(String prCode) {
+		this.prCode = prCode;
 	}
 
 
@@ -149,12 +161,25 @@ public class Consumers extends BaseConsumers<Long> {
 	}
 
 
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
 	@Override
 	public String toString() {
-		return "Consumers [id=" + id + ", piCode=" + piCode + ", apiCode=" + apiCode + ", name=" + name + ", country="
-				+ country + ", zela=" + zela + ", upozela=" + upozela + ", union=" + union + ", work=" + work
-				+ ", contact=" + contact + ", bkash=" + bkash + "]";
+		return "Consumers [id=" + id + ", piCode=" + piCode + ", apiCode=" + apiCode + ", prCode=" + prCode + ", name="
+				+ name + ", country=" + country + ", zela=" + zela + ", upozela=" + upozela + ", union=" + union
+				+ ", work=" + work + ", contact=" + contact + ", bkash=" + bkash + ", status=" + status + "]";
 	}
+
+
+	
 
 
 	
