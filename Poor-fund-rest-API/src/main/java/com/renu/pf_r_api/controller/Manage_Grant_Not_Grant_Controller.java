@@ -1,5 +1,6 @@
 package com.renu.pf_r_api.controller;
 
+import java.io.File;
 import java.util.UUID;
 
 import org.slf4j.Logger;
@@ -25,11 +26,13 @@ public class Manage_Grant_Not_Grant_Controller {
 	@Autowired
 	ConsumersRepository consumersRepository;
 	private String provedCode = null;
-
+	String prFileCode=null;
+    File file=null;
 	@PostMapping(value = "/addGrantNotGrant")
 	public ResponseEntity<?> addGrantNotGrant(
 			@RequestParam("provedFile") MultipartFile provedFile, @RequestParam("status") String status,
 			@RequestParam("grantNotGrantId")Long grantNotGrantId) {
+		LOGGER.info("From class Manage_Grant_Not_Grant_Controller ,method : addGrantNotGrant()");
 
 		if (provedFile.getContentType().equals("image/jpeg") 
 						|| provedFile.getContentType().equals("image/jpg")
@@ -37,12 +40,21 @@ public class Manage_Grant_Not_Grant_Controller {
 						|| provedFile.getContentType().equals("image/gif")) {
 
 			this.provedCode = "PR" + UUID.randomUUID().toString().substring(26).toUpperCase();
-			LOGGER.info(provedCode);
-	
+			LOGGER.info("From class Manage_Grant_Not_Grant_Controller ,method : addGrantNotGrant()..File is valid");
+
+	             if (this.provedCode!=null) {
+	            	 LOGGER.info("From class Manage_Grant_Not_Grant_Controller ,method : addGrantNotGrant().. Id is valid");
+
+	            	 Consumers consumers = consumersRepository.getById(grantNotGrantId);
+	            	 if (consumers!=null) {
+	            		this.prFileCode=consumers.getPrCode();
+	            		this.file=new File("H:\\NodeJS_Github\\Poor-fund-App\\Poor-fund-App\\src\\assets\\granted-notgranted-images\\"+this.prFileCode+".jpg");
+	            		this.file.delete();
+	            		LOGGER.info("From class Manage_Grant_Not_Grant_Controller ,method : addGrantNotGrant()---File : "+consumers.getPrCode()+".jpg--deleted");
+
 				FileUpload.fileUploadForGrantedNotGranted(provedFile,
 						this.provedCode);
-			
-				Consumers consumers = consumersRepository.getById(grantNotGrantId);
+			   
 				consumers.setStatus(status);
 				consumers.setPrCode(this.provedCode);
 				consumersRepository.save(consumers);
@@ -50,6 +62,10 @@ public class Manage_Grant_Not_Grant_Controller {
 				consumers.setPrCode(null);
 			LOGGER.info("From class ConsumersController ,method : addGrantNotGrant(),Image uploaded");
 			return ResponseEntity.ok().body(" success file upload ");
+	            	 }
+	            	 return ResponseEntity.badRequest().body(" id not valid others are right ");
+	             }
+	         	return ResponseEntity.badRequest().body("file valid but id or proved code not valid !! ");
 		} else {
 			LOGGER.info(
 					"From class ConsumersController ,method : addGrantNotGrant(), File not an image that is rejected");
