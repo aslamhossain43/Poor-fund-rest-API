@@ -17,11 +17,11 @@ import com.renu.pf_r_api.repositories.ConsumersRepository;
 @CrossOrigin("*")
 @RequestMapping(value="/gl")
 @RestController
-public class GrantedListController {
-private static final Logger LOGGER=LoggerFactory.getLogger(GrantedListController.class);
+public class GetAllListController {
+private static final Logger LOGGER=LoggerFactory.getLogger(GetAllListController.class);
 @Autowired
 ConsumersRepository consumersRepository;
-@GetMapping(value="/grantedList")
+@GetMapping(value="/getAllList")
 public ResponseEntity<List<Consumers>>getGrantedList(){
 	LOGGER.info("FROM class GrantedListController, method : getGrantedList()");
 	List<Consumers>consumers=consumersRepository.findAll();

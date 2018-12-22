@@ -16,7 +16,7 @@ public class FileUpload {
 			.get("H:\\NodeJS_Github\\Poor-fund-App\\Poor-fund-App\\src\\assets\\client-images\\");
 	
 	private static final Path ABS_PATH_FOR_GRANTED_NOT_GRANTED = Paths
-			.get("H:\\NodeJS_Github\\Poor-fund-App\\Poor-fund-App\\src\\assets\\granted-notgranted-images\\");
+			.get("H:\\NodeJS_Github\\Poor-fund-App\\Poor-fund-App\\src\\assets\\granted-images\\");
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(FileUpload.class);
 
@@ -39,9 +39,9 @@ public class FileUpload {
 
 	}
 	
-	public static void fileUploadForGrantedNotGranted(MultipartFile provedFile, String provedCode) {
+	public static void fileUploadForGranted(MultipartFile provedFile, String provedCode) {
 
-		LOGGER.info("FROM piFileUploadForGrantedNotGranted method");
+		LOGGER.info("FROM piFileUploadForGranted method");
 			
 		try {
 			Files.copy(provedFile.getInputStream(), ABS_PATH_FOR_GRANTED_NOT_GRANTED.resolve(provedCode + ".jpg"));
