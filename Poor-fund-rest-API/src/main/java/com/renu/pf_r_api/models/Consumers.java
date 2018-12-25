@@ -27,9 +27,9 @@ public class Consumers extends BaseConsumers<Long> {
 	@NotBlank(message = "Enter your work")
 	private String work;
 	@NotNull
-	private Long contact;
+	private Number contact;
 	@NotNull
-	private Long bkash;
+	private Number bkash;
 	private String status;
 	@Override
 	public Long getId() {
@@ -136,22 +136,24 @@ public class Consumers extends BaseConsumers<Long> {
 
 
 
-	public Long getContact() {
+	
+
+	public Number getContact() {
 		return contact;
 	}
 
 
-	public void setContact(Long contact) {
+	public void setContact(Number contact) {
 		this.contact = contact;
 	}
 
 
-	public Long getBkash() {
+	public Number getBkash() {
 		return bkash;
 	}
 
 
-	public void setBkash(Long bkash) {
+	public void setBkash(Number bkash) {
 		this.bkash = bkash;
 	}
 
@@ -178,8 +180,6 @@ public class Consumers extends BaseConsumers<Long> {
 				+ ", work=" + work + ", contact=" + contact + ", bkash=" + bkash + ", status=" + status + "]";
 	}
 
-
-	
 
 
 	

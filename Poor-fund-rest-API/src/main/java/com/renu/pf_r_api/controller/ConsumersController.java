@@ -46,12 +46,10 @@ public class ConsumersController {
 			FileUpload.fileUpload(piFile, piCode, apiFile, apiCode);
 			LOGGER.info(this.piCode);
 			LOGGER.info(this.apiCode);
-			LOGGER.info(
-					"From class ConsumersController ,method : ResponseEntity<String>addConsumersFile(),Image uploaded");
+			LOGGER.info("From class ConsumersController ,method : ResponseEntity<String>addConsumersFile(),Image uploaded");
 			return ResponseEntity.ok().body(" success file upload ");
 		} else {
-			LOGGER.info(
-					"From class ConsumersController ,method : ResponseEntity<String>addConsumersFile(), File not an image that is rejected");
+			LOGGER.info("From class ConsumersController ,method : ResponseEntity<String>addConsumersFile(), File not an image that is rejected");
 			return ResponseEntity.badRequest().body(null);
 
 		}
@@ -69,6 +67,8 @@ public class ConsumersController {
 				consumers.setPiCode(this.piCode);
 				consumers.setApiCode(this.apiCode);
 				consumersRepository.save(consumers);
+				LOGGER.info("CANDIDATES ADDED ,piCode : "+this.piCode);
+				LOGGER.info("CANDIDATES ADDED ,apiCode : "+this.apiCode);
 				this.piCode = null;
 				this.apiCode = null;
 				consumers.setId(null);

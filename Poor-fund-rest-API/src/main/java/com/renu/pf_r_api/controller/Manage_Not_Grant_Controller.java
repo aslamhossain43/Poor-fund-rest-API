@@ -37,8 +37,14 @@ public class Manage_Not_Grant_Controller {
 	            	 this.provedCode=consumers.getPrCode();
 	            	 this.file=new File("H:\\NodeJS_Github\\Poor-fund-App\\Poor-fund-App\\src\\assets\\granted-images\\"+this.provedCode+".jpg");
 	            		this.file.delete();
-	            	
-	            				consumers.setStatus(status);
+	            		if (status.equals("NULL")) {
+	            			consumers.setStatus(null);
+						}else {
+							consumers.setStatus(status);
+						}
+	            		consumers.setPrCode(null);
+	            		 LOGGER.info("From class Manage_Grant_Not_Grant_Controller ,method : addNotGrant()-------"+this.provedCode+".jpg--------has deleted "); 	
+	            				
 				consumersRepository.save(consumers);
 				consumers.setStatus(null);
 			return ResponseEntity.ok().body(" status added ");
