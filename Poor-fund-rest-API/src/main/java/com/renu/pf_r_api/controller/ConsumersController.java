@@ -1,5 +1,6 @@
 package com.renu.pf_r_api.controller;
 
+import java.util.Calendar;
 import java.util.UUID;
 
 import org.slf4j.Logger;
@@ -66,6 +67,7 @@ public class ConsumersController {
 				LOGGER.info(this.apiCode);
 				consumers.setPiCode(this.piCode);
 				consumers.setApiCode(this.apiCode);
+				consumers.setYear(Calendar.getInstance().get(Calendar.YEAR));
 				consumersRepository.save(consumers);
 				LOGGER.info("CANDIDATES ADDED ,piCode : "+this.piCode);
 				LOGGER.info("CANDIDATES ADDED ,apiCode : "+this.apiCode);
@@ -78,6 +80,7 @@ public class ConsumersController {
 
 		} else {
 			LOGGER.info("id not null");
+			consumers.setYear(Calendar.getInstance().get(Calendar.YEAR));
 			consumersRepository.save(consumers);
 			consumers.setId(null);
 			return ResponseEntity.ok().body(null);

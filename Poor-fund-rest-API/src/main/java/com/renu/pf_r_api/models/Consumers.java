@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
 @Entity
 public class Consumers extends BaseConsumers<Long> {
 	@Id
@@ -27,163 +28,139 @@ public class Consumers extends BaseConsumers<Long> {
 	@NotBlank(message = "Enter your work")
 	private String work;
 	@NotNull
-	private Number contact;
+	private Long contact;
 	@NotNull
-	private Number bkash;
+	private Long bkash;
 	private String status;
+    private Integer year;
 	@Override
 	public Long getId() {
 		return id;
 	}
-	
-	
-	public Consumers() {
-		
-	}
 
+	public Consumers() {
+
+	}
 
 	public String getPiCode() {
 		return piCode;
 	}
 
-
 	public void setPiCode(String piCode) {
 		this.piCode = piCode;
 	}
-
 
 	public String getApiCode() {
 		return apiCode;
 	}
 
-
 	public void setApiCode(String apiCode) {
 		this.apiCode = apiCode;
 	}
-
 
 	public String getPrCode() {
 		return prCode;
 	}
 
-
 	public void setPrCode(String prCode) {
 		this.prCode = prCode;
 	}
-
 
 	public String getName() {
 		return name;
 	}
 
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 
 	public String getCountry() {
 		return country;
 	}
 
-
 	public void setCountry(String country) {
 		this.country = country;
 	}
-
 
 	public String getZela() {
 		return zela;
 	}
 
-
 	public void setZela(String zela) {
 		this.zela = zela;
 	}
-
 
 	public String getUpozela() {
 		return upozela;
 	}
 
-
 	public void setUpozela(String upozela) {
 		this.upozela = upozela;
 	}
-
 
 	public String getUnion() {
 		return union;
 	}
 
-
 	public void setUnion(String union) {
 		this.union = union;
 	}
-
 
 	public String getWork() {
 		return work;
 	}
 
-
 	public void setWork(String work) {
 		this.work = work;
 	}
 
-
-
-
-
-
-	
-
-	public Number getContact() {
+	public Long getContact() {
 		return contact;
 	}
 
-
-	public void setContact(Number contact) {
+	public void setContact(Long contact) {
 		this.contact = contact;
 	}
 
-
-	public Number getBkash() {
+	public Long getBkash() {
 		return bkash;
 	}
 
-
-	public void setBkash(Number bkash) {
+	public void setBkash(Long bkash) {
 		this.bkash = bkash;
 	}
-
 
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-
 	public String getStatus() {
 		return status;
 	}
 
-
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
+	
+	
 
+	public Integer getYear() {
+		return year;
+	}
+
+	public void setYear(Integer year) {
+		this.year = year;
+	}
 
 	@Override
 	public String toString() {
 		return "Consumers [id=" + id + ", piCode=" + piCode + ", apiCode=" + apiCode + ", prCode=" + prCode + ", name="
 				+ name + ", country=" + country + ", zela=" + zela + ", upozela=" + upozela + ", union=" + union
-				+ ", work=" + work + ", contact=" + contact + ", bkash=" + bkash + ", status=" + status + "]";
+				+ ", work=" + work + ", contact=" + contact + ", bkash=" + bkash + ", status=" + status + ", year="
+				+ year + "]";
 	}
 
+	
 
-
-	
-	
-	
-	
 }
