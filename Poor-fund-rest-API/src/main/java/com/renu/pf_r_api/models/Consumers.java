@@ -15,6 +15,7 @@ public class Consumers extends BaseConsumers<Long> {
 	private String piCode;
 	private String apiCode;
 	private String prCode;
+
 	@NotBlank(message = "Enter your  name")
 	private String name;
 	@NotBlank(message = "Your country")
@@ -33,6 +34,7 @@ public class Consumers extends BaseConsumers<Long> {
 	private Long bkash;
 	private String status;
     private Integer year;
+    private String uid;
 	@Override
 	public Long getId() {
 		return id;
@@ -153,13 +155,25 @@ public class Consumers extends BaseConsumers<Long> {
 		this.year = year;
 	}
 
+	
+	
+	public String getUid() {
+		return uid;
+	}
+
+	public void setUid(String uid) {
+		this.uid = uid;
+	}
+
 	@Override
 	public String toString() {
 		return "Consumers [id=" + id + ", piCode=" + piCode + ", apiCode=" + apiCode + ", prCode=" + prCode + ", name="
 				+ name + ", country=" + country + ", zela=" + zela + ", upozela=" + upozela + ", union=" + union
 				+ ", work=" + work + ", contact=" + contact + ", bkash=" + bkash + ", status=" + status + ", year="
-				+ year + "]";
+				+ year + ", uid=" + uid + "]";
 	}
+
+	
 
 	
 
