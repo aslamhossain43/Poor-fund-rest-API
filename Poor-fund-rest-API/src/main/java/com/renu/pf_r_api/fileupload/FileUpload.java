@@ -17,7 +17,8 @@ public class FileUpload {
 	
 	private static final Path ABS_PATH_FOR_GRANTED_NOT_GRANTED = Paths
 			.get("H:\\NodeJS_Github\\Poor-fund-App\\Poor-fund-App\\src\\assets\\granted-images\\");
-	
+	private static final Path ABS_PATH_FOR_STAFF_IMAGES = Paths
+			.get("H:\\NodeJS_Github\\Poor-fund-App\\Poor-fund-App\\src\\assets\\staff-images\\");
 	private static final Logger LOGGER = LoggerFactory.getLogger(FileUpload.class);
 
 	public static void fileUpload(MultipartFile piFile, String piCode, MultipartFile apiFile, String apiCode) {
@@ -53,7 +54,20 @@ public class FileUpload {
         
 
 	}
-	
+	public static void fileUploadForStaff(MultipartFile file, String sCode) {
+
+		LOGGER.info("FROM piFileUploadForGranted method");
+			
+		try {
+			Files.copy(file.getInputStream(), ABS_PATH_FOR_STAFF_IMAGES.resolve(sCode + ".jpg"));
+
+		} catch (Exception e) {
+			throw new RuntimeException("FAIL!");
+		}
+        
+        
+
+	}
 	
 
 }
