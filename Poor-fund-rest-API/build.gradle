@@ -32,6 +32,7 @@ dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-data-jpa')
 	implementation('org.springframework.boot:spring-boot-starter-web')
 	compile group: 'org.springframework.boot', name: 'spring-boot-devtools'
+	compile group: "com.twilio.sdk", name: "twilio", version: "7.36.2"
 	runtimeOnly('mysql:mysql-connector-java')
 	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
